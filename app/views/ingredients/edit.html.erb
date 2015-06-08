@@ -1,0 +1,17 @@
+Edycja <% @ingredient.name %>
+<br> 
+<br>
+<span style="color:red">
+  <%= @ingredient.errors.full_messages.first if @ingredient.errors.any? %>
+</span>
+
+<br>
+<%= form_for @ingredient do |f| %>
+  <%= f.label 'Nazwa' %>
+  <%= f.text_field :name %>
+  <br>
+  <br>
+  <%= f.submit "Aktualizuj" %>
+<nobr>
+<% end %>
+| <%= link_to 'Anuluj', @ingredient %>

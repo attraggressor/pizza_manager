@@ -1,0 +1,20 @@
+<table style="width:100%">
+  
+<h1>Lista Pizzerii</h1>
+  <%= link_to 'Nowy Oddział', new_company_branch_path %>
+  <br>
+  <tr>
+    <td></td>
+    <td>Szczegóły</td>
+    <td></td>
+  </tr>
+  <% @company_branches.each do |cb| %>
+  <tr>
+    <td><%= cb.name %></td>
+    <td><%= link_to 'Pokaż', cb %></td>
+    <td><%= link_to 'Usuń', cb, :confirm => 'Usunąć?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table> 
+
+<br>

@@ -1,0 +1,18 @@
+Szczegóły <%= @product.name %> <br><br>
+
+Nazwa:
+<br>
+<%= @product.name %>
+<br>
+<br>
+Cena:
+<br>
+<%= @product.price %>
+<br>
+<br>
+Składniki:
+<br>
+<%= @product.ingredients.map(&:name).join(', ') %>
+<br>
+<br>
+<%= link_to 'Wróć', products_path %> | <%= link_to 'Edytuj', edit_product_path(@product) %>

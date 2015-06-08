@@ -1,0 +1,25 @@
+Edycja <% @product.name %>
+<br> 
+<br>
+<span style="color:red">
+  <%= @product.errors.full_messages.first if @product.errors.any? %>
+</span>
+
+<br>
+<%= form_for @product do |f| %>
+  <%= f.label 'Nazwa' %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label 'Cena' %>
+  <%= f.number_field :price %>
+  <br>
+  <br>
+  <%= f.label 'Lista Składników:' %>
+  <br>
+  <%= f.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :ingredient_label) %>
+  <br>
+  <br>
+  <%= f.submit "Aktualizuj" %>
+<nobr>
+<% end %>
+| <%= link_to 'Wróć', @product %>

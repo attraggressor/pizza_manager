@@ -1,0 +1,47 @@
+Edycja <%= @company_branch.name %>
+<br> 
+<br>
+<span style="color:red">
+  <%= @company_branch.errors.full_messages.first if @company_branch.errors.any? %>
+</span>
+
+<br>
+<%= form_for @company_branch do |f| %>
+  <%= f.label 'Nazwa' %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label 'Adres' %>
+  <%= f.text_field :address_line %>
+  <br>
+  <%= f.label 'Kod Pocztowy' %>
+  <%= f.text_field :address_zip_code %>
+  <br>
+  <%= f.label 'Miasto' %>
+  <%= f.text_field :address_city %>
+  <br>
+  <br>
+  <%= f.label 'Godziny Pracy' %>
+  <br>
+  <br>
+  <% @business_hours.each do |bh| %>
+    <%= fields_for :business_hours do |f| %>
+      <%= @week_days[bh.day.to_sym] %>
+      <%= f.fields_for bh.day do |d| %>
+        <%= d.time_select( :open_time, default: {hour: bh.open_time.strftime("%H").to_i, minute: bh.open_time.strftime("%M").to_i}, minute_step: 5) %> - 
+        <%= d.time_select( :close_time, default: {hour: bh.close_time.strftime("%H").to_i, minute: bh.close_time.strftime("%M").to_i}, minute_step: 5) %>
+      <% end %>
+    <% end %>
+    <br>
+  <% end %>
+  <br>
+  <br>
+  <%= f.label 'Lista Składników:' %>
+  <br>
+  <%= f.collection_check_boxes(:product_ids, Product.all, :id, :product_label) %>
+  <br>
+  <br>
+  <%= f.submit "Aktualizuj" %>
+  <nobr>
+<% end %>
+
+| <%= link_to 'Anuluj', @company_branch %>

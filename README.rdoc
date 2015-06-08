@@ -1,0 +1,17 @@
+## Simple App For Learning Purposes
+
+### Using:
+- Ruby: 2.2.1 
+- Rails: 4.2.1
+- Rspec-Rails: 3.0
+- Sqlite3
+
+####Database creation:
+```sh
+rake db:create
+rake db:migrate
+```
+####Example data provided:
+```sh
+rake db:seed
+```

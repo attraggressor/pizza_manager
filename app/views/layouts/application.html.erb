@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Astarium</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<style>
+ul {
+  display: inline;
+}
+</style>
+
+
+  <%= link_to 'Oddziały', company_branches_path %>
+  <%= link_to 'Produkty', products_path %>
+  <%= link_to 'Składniki', ingredients_path %>
+<br> 
+<br>
+
+<%= yield %>
+
+</body>
+</html>

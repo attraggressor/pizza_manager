@@ -1,0 +1,47 @@
+<h1>Nowy Oddział</h1>
+<br> 
+<br>
+<span style="color:red">
+  <%= @company_branch.errors.full_messages.first if @company_branch.errors.any? %>
+</span>
+
+<br>
+<%= form_for @company_branch do |f| %>
+  <%= f.label 'Nazwa' %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label 'Adres' %>
+  <%= f.text_field :address_line %>
+  <br>
+  <%= f.label 'Kod Pocztowy' %>
+  <%= f.text_field :address_zip_code %>
+  <br>
+  <%= f.label 'Miasto' %>
+  <%= f.text_field :address_city %>
+  <br>
+  <br>
+  <%= f.label 'Godziny Pracy' %>
+  <br>
+  <br>
+  <% @week_days.each do |key, val| %>
+    <%= val %>
+    <%= fields_for :business_hours do |bh| %>
+      <%= bh.fields_for key do |day| %>
+        <%= day.time_select( :open_time, default: {hour: 00, minute: 00}, minute_step: 5) %> - 
+        <%= day.time_select( :close_time, default: {hour: 00, minute: 00}, minute_step: 5) %>
+      <% end %>
+    <% end %>
+    <br>
+  <% end %>
+  <br>
+  <br>
+  <%= f.label 'Lista Składników:' %>
+  <br>
+  <%= f.collection_check_boxes(:product_ids, Product.all, :id, :product_label) %>
+  <br>
+  <br>
+  <%= f.submit "Dodaj" %>
+  <nobr>
+<% end %>
+
+| <%= link_to 'Anuluj', company_branches_path %>

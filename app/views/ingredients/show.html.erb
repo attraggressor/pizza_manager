@@ -1,0 +1,10 @@
+Składnik <%= @ingredient.name %> 
+<br>
+<br>
+
+Nazwa:
+<br>
+<%= @ingredient.name %>
+<br>
+<br>
+<%= link_to 'Wróć', ingredients_path %> | <%= link_to 'Edytuj', edit_ingredient_path(@ingredient) %>

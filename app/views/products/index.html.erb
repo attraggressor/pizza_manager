@@ -1,0 +1,21 @@
+<h1>Produkty</h1>
+<%= link_to 'Nowy Produkt', new_product_path %>
+<br>
+<table style="width:100%">
+  <tr>
+    <td></td>
+    <td>Cena</td>
+    <td>Szczegóły</td>
+    <td></td>
+  </tr>
+  <% @products.each do |p| %>
+  <tr>
+    <td><%= p.name %></td>
+    <td><%= p.price %></td>
+    <td><%= link_to 'Pokaż', p %></td>
+    <td><%= link_to 'Usuń', p, :confirm => 'Usunąć?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table> 
+
+<br>

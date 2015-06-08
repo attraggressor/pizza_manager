@@ -1,0 +1,31 @@
+Szczegóły <%= @company_branch.name %> 
+<br>
+<br>
+
+Nazwa:
+<br>
+<%= @company_branch.name %>
+<br>
+<br>
+Pełny Adres: 
+<br>
+<%= @company_branch.address_line %>
+<br>
+<%= @company_branch.address_zip_code %>
+<%= @company_branch.address_city %>
+<br>
+<br>
+Godziny pracy:
+<br>
+<% @company_branch.business_hour.each do |bh| %>
+  <%= @week_days[bh.day.to_sym] %> <%= bh.open_time.strftime("%H:%M") %> - <%= bh.close_time.strftime("%H:%M") %>
+  <br>
+<% end %>
+<br>
+<br>
+Produkty:
+<br>
+<%= @company_branch.products.map(&:name).join(', ') %>
+<br>
+<br>
+<%= link_to 'Wróć', company_branches_path %> | <%= link_to 'Edytuj', edit_company_branch_path(@company_branch) %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_branch_id: 1
+  day: MyString
+  open_time: 2015-06-04 17:52:45
+  close_time: 2015-06-04 17:52:45
+
+two:
+  company_branch_id: 1
+  day: MyString
+  open_time: 2015-06-04 17:52:45
+  close_time: 2015-06-04 17:52:45
